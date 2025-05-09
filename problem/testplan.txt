@@ -1,0 +1,8 @@
+# Each line should describe a call to a generator define in problem.rbx.yml.
+# `gen XXX` will call the generator named `gen` with the argument `XXX`.
+# You can freely specify arguments as you wish.
+# Each generator call must be on a new line.
+# You can add comments with `#` at the beginning of the line.
+
+gen 123456
+gen 12345678

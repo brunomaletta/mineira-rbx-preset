@@ -1,0 +1,60 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{mineira}
+
+%- if problem.blocks.preamble is defined
+	\VAR{problem.blocks.preamble}
+%- endif
+
+\begin{document}
+
+\includeProblem
+%- if problem.short_name is defined
+	[\VAR{problem.short_name}]
+%- endif
+{\VAR{problem.title | escape}}{
+
+	\VAR{problem.blocks.legend}
+
+	%- if problem.blocks.input is defined
+		\inputdesc{\VAR{problem.blocks.input}}
+	%- endif
+
+	%- if problem.blocks.output is defined
+		\outputdesc{\VAR{problem.blocks.output}}
+	%- endif
+
+	%- if problem.blocks.interaction is defined
+		\interactiondesc{\VAR{problem.blocks.interaction}}
+	%- endif
+
+	%- if problem.samples
+		\vspace{0.3cm}
+		\subsection*{Exemplos}
+		%- for sample in problem.samples
+			%- if sample.interaction is not none
+				\exemploInterativo
+				%- for entry in sample.interaction.entries
+					\interaction{\VAR{entry.data}}{\VAR{entry.pipe}}
+				%- endfor
+			%- else
+				\exemplo{\VAR{sample.inputPath}}
+					{\VAR{sample.outputPath if sample.outputPath is not none else ''}}
+			%- endif
+			%- if sample.explanation is not none
+				\explanation{\VAR{sample.explanation}}
+			%- endif
+		%- endfor
+	%- endif
+
+	%- if problem.blocks.notes is defined
+		\subsection*{Observações}
+		\VAR{problem.blocks.notes}
+	%- endif
+}
+%- if problem.blocks.editorial is defined
+\subsection*{Solução}
+\VAR{problem.blocks.editorial}
+%- endif
+\end{document}
+

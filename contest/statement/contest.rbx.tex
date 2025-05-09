@@ -1,0 +1,20 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{mineira}
+\usepackage{import}
+
+\def\Ano{\VAR{vars.year}}
+\def\Modalidade{\VAR{contest.title}}
+\def\Data{\VAR{vars.date}}
+
+\begin{document}
+\InsertTitlePage
+
+%- for problem in problems
+\stepcounter{problemcounter}
+\subimport{\VAR{problem.path | parent}/}{\VAR{problem.path | stem}}
+%- endfor
+
+\label{lastpage}
+\end{document}
+

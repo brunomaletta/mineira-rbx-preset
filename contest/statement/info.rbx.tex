@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\pagestyle{myheadings}
+\markright{\VAR{contest.title}}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[scale=0.2]{logo.png}
+
+\vspace{1cm}
+{\huge{\hspace{-0.1cm}\bf \VAR{vars.year}}} \\
+
+\vspace{0.5cm}
+{\huge \bf Folha de Informações}\\[12pt]
+{\Large \bf \VAR{contest.title}}
+\end{center}
+
+\vspace{0.5cm}
+\subsubsection*{Linguagens aceitas}
+\begin{multicols}{2}
+\begin{itemize}
+	\item \texttt{C}
+	\item \texttt{C++}
+	\item \texttt{Java}
+	\item \texttt{Python}
+\end{itemize}
+\end{multicols}
+
+\subsubsection*{Limites de tempo e memória}
+
+\begin{center}
+\begin{tabular}{c|ccc|c}
+& \multicolumn{3}{c|}{Tempo (s)} & \multirow{2}{*}{Memória (MiB)} \\
+%\cline{2-4}
+{\sf Problema} & {\sf C/C++} &{\sf Java} & {\sf Python3} & \\
+\hline
+%- for problem in problems:
+\VAR{problem.short_name}
+& \VAR{problem.package.timelimit_for_language('cpp') / 1000 | round(1, 'floor')}
+& \VAR{problem.package.timelimit_for_language('java') / 1000 | round(1, 'floor')}
+& \VAR{problem.package.timelimit_for_language('py') / 1000 | round(1, 'floor')}
+& \VAR{problem.package.memoryLimit}
+\\ \hline
+%- endfor
+\end{tabular}
+\end{center}
+
+\subsubsection*{Outros limites}
+\begin{verbatim}
+Tamanho do arquivo fonte: 100KB
+\end{verbatim}
+
+\subsubsection*{Comandos de compilação}
+
+\begin{itemize}
+%- if keyed_languages.c is defined:
+\item \texttt{\VAR{keyed_languages.c.name}}: \texttt{\VAR{keyed_languages.c.command}}
+%- endif
+
+%- if keyed_languages.cpp is defined:
+\item \texttt{\VAR{keyed_languages.cpp.name}}: \texttt{\VAR{keyed_languages.cpp.command}}
+%- endif
+
+%- if keyed_languages.java is defined:
+\item \texttt{\VAR{keyed_languages.java.name}}: \texttt{javac}
+%- endif
+\end{itemize}
+
+\end{titlepage}
+\end{document}

@@ -1,0 +1,7 @@
+.box/
+build/
+
+*.o
+*.aux
+*.log
+.DS_Store

@@ -1,0 +1,29 @@
+# Add problems by running `rbx contest add <problem-name> <short-name>`
+
+name: mineira
+statements:
+- title: Maratona Mineira de Programação
+  language: pt
+  path: statement/contest.rbx.tex
+  type: jinja-tex
+  assets:
+  - statement/mineira.sty
+  - statement/instrucoes.tex
+  - statement/*.png
+  - statement/*.pdf
+  joiner: {type: tex2pdf}
+  override:
+    configure:
+    - type: rbx-tex        # Convert rbxTeX to TeX
+      template: statement/template.rbx.tex
+- title: Maratona Mineira de Programação
+  language: info-pt
+  path: statement/info.rbx.tex
+  type: jinja-tex
+  assets:
+  - statement/*.png
+  - statement/*.pdf
+vars:
+  date: 08 de Junho de 2024
+  year: 2024
+problems: []
