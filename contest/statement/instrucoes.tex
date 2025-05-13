@@ -40,9 +40,9 @@ de 1 a \pageref*{lastpage}. Verifique se o caderno está completo.
 
 \subsection*{Problemas Interativos}
 
-A prova pode conter problemas interaivos. Nesse tipo de problema, os dados de entrada fornecidos ao seu programa podem não ser predeterminados, mas são construídos especificamente para a sua solução. O juiz escreve um programa especial (o \textit{interactor}), cuja saída é transferida para a entrada da sua solução, e a saída do seu programa é enviada para a entrada do \textit{interactor}. Em outras palavras, sua solução e o \textit{interactor} trocam dados e podem decidir o que imprimir com base no histórico da comunicação.
+A prova pode conter problemas interaivos. Nesse tipo de problema, os dados de entrada fornecidos ao seu programa podem não ser predeterminados, mas são construídos especificamente para a sua solução. O juiz escreve um programa especial (o interador), cuja saída é transferida para a entrada da sua solução, e a saída do seu programa é enviada para a entrada do interador. Em outras palavras, sua solução e o interador trocam dados e podem decidir o que imprimir com base no histórico da comunicação.
 
-Quando você escreve a solução para um problema interativo, é importante lembrar que, se você imprimir algum dado, é possível que ele seja primeiro armazenado em um \textit{buffer} interno e não seja transferido imediatamente para o \textit{interactor}. Para evitar essa situação, você deve usar uma operação especial de \textit{flush} toda vez que imprimir algum dado. Essas operações de \textit{flush} estão presentes nas bibliotecas padrão de quase todas as linguagens:
+Quando você escreve a solução para um problema interativo, é importante lembrar que, se você imprimir algum dado, é possível que ele seja primeiro armazenado em um \textit{buffer} interno e não seja transferido imediatamente para o interador. Para evitar essa situação, você deve usar uma operação especial de \textit{flush} toda vez que imprimir algum dado. Essas operações de \textit{flush} estão presentes nas bibliotecas padrão de quase todas as linguagens:
 
 \begin{itemize}
 	\item \texttt{fflush(stdout)} em \texttt{C}.
