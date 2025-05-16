@@ -1,9 +1,9 @@
+---
 # yaml-language-server: $schema=/Users/rsalesc/Library/Application Support/rbx/schemas/PresetLock.json
-
-name: default
-uri: rsalesc/rbx/rbx/resources/presets/default
+name: 'default'
+uri: 'rsalesc/rbx/rbx/resources/presets/default'
 assets:
-- path: statement/template.rbx.tex
-  hash: d81973af37032b9ab692625bfcc3da43ba613d31
-- path: statement/olymp.sty
-  hash: eeb9bbd95039adc6125350628ef4467935365897
+  - path: 'statement/template.rbx.tex'
+    hash: 'd81973af37032b9ab692625bfcc3da43ba613d31'
+  - path: 'statement/olymp.sty'
+    hash: 'eeb9bbd95039adc6125350628ef4467935365897'
