@@ -7,6 +7,14 @@
 \def\Modalidade{\VAR{contest.title}}
 \def\Data{\VAR{vars.date}}
 
+%- if is_editorial
+\AddToHook{shipout/foreground}{
+       \begin{tikzpicture}[overlay, remember picture]
+            \node[text=gray, rotate=45, scale=8, opacity=0.5] at (current page) {EDITORIAL};
+        \end{tikzpicture}
+    }
+%- endif
+
 \begin{document}
 \InsertTitlePage
 
