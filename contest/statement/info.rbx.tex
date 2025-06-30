@@ -18,28 +18,42 @@
 \begin{titlepage}
 \begin{center}
 
-\includegraphics[scale=0.2]{logo.png}
+\includegraphics[width=4cm]{logo.png}
 
 \vspace{1cm}
-{\huge{\hspace{-0.1cm}\bf \VAR{vars.year}}} \\
+{\huge{\bf \VAR{vars.year}}} \\
 
 \vspace{0.5cm}
 {\huge \bf Folha de Informações}\\[12pt]
 {\Large \bf \VAR{contest.title}}
 \end{center}
 
-\vspace{0.5cm}
-\subsubsection*{Linguagens aceitas}
+\section{Informações sobre a duração da prova}
+
+\begin{itemize}
+	\item A prova tem duração de 5 horas.
+	\item Uma hora antes do fim da prova, o placar será congelado e não será mais atualizado.
+	\item Durante os últimos 15 minutos de prova, você não receberá o veredito de suas submissões, mas elas ainda serão contabilizadas para o placar final.
+\end{itemize}
+
+\section{Informações sobre o Ambiente de Teste}
+
+\subsection{Ambiente}
+
+O sistema de correção de submissões será executado na distribuição \texttt{Ubuntu GNU/Linux 22.04 LTS amd64}, com as seguintes configurações.
+
+\subsection{Linguagens aceitas}
+
 \begin{multicols}{2}
 \begin{itemize}
-	\item \texttt{C}
-	\item \texttt{C++}
-	\item \texttt{Java}
-	\item \texttt{Python}
+    \item \texttt{C}: gcc versão 11.4.0
+    \item \texttt{C++20}: gcc versão 11.4.0
+    \item \texttt{Python}: Python 3.10.12
+    \item \texttt{Java}: openjdk 17.0.11
 \end{itemize}
 \end{multicols}
 
-\subsubsection*{Limites de tempo e memória}
+\subsection{Limites de tempo e memória}
 
 \begin{center}
 \begin{tabular}{c|ccc|c}
@@ -58,25 +72,119 @@
 \end{tabular}
 \end{center}
 
-\subsubsection*{Outros limites}
-\begin{verbatim}
-Tamanho do arquivo fonte: 100KB
-\end{verbatim}
+\noindent Antes da competição, os juízes terão resolvido todos os problemas na linguagem \texttt{C}/\texttt{C++}. Os limites de tempo para cada problema serão calculados com base no tempo de execução dessas soluções.
 
-\subsubsection*{Comandos de compilação}
+\subsection{Outros Limites}
 
 \begin{itemize}
-%- if keyed_languages.c is defined:
-\item \texttt{\VAR{keyed_languages.c.name}}: \texttt{\VAR{keyed_languages.c.command}}
-%- endif
+    \item Tamanho do arquivo fonte: \texttt{100KiB}
+\end{itemize}
 
-%- if keyed_languages.cpp is defined:
-\item \texttt{\VAR{keyed_languages.cpp.name}}: \texttt{\VAR{keyed_languages.cpp.command}}
-%- endif
+\subsection{Comandos de Compilação}
 
-%- if keyed_languages.java is defined:
-\item \texttt{\VAR{keyed_languages.java.name}}: \texttt{javac}
-%- endif
+\begin{itemize}
+    \item \texttt{C}: \texttt{gcc -x c -O2 -std=gnu11 -static -lm}
+    \item \texttt{C++20}: \texttt{g++ -x c++ -O2 -std=gnu++20 -static}
+    \item \texttt{Java}: \texttt{javac}
+\end{itemize}
+
+\subsection{C/C++20}
+
+\begin{itemize}
+    \item Seu programa deve retornar zero, executando, como último comando, \texttt{return 0} ou \texttt{exit(0)}.
+\end{itemize}
+
+\subsection{Java}
+
+\begin{itemize}
+    \item Não declare um \texttt{package} no seu programa Java; caso contrário, o programa não será executado no Boca.
+    \item Comando para execução:
+
+	\texttt{java -Xms\{limite\_memoria\}m -Xmx\{limite\_memoria\}m -Xss256m \{codigo\_problema\}}.
+    \item Atenção: soluções em Java podem não cumprir os limites de tempo em alguns problemas devido ao desempenho da linguagem.
+\end{itemize}
+
+\subsection{Python}
+
+\begin{itemize}
+    \item Apenas \texttt{Python 3} é suportado.
+	\item Programs em Python são interpretados. Erros de sintaxe resultarão em ``\texttt{Runtime Error}''.
+    \item Atenção: soluções em Python podem não cumprir os limites de tempo em alguns problemas devido ao desempenho da linguagem.
+\end{itemize}
+
+\section{Instruções para o Uso do Sistema de Submissão Boca}
+
+\subsection{Submissão de Soluções}
+
+Para submeter uma solução, use a interface web do Boca:
+\begin{enumerate}
+    \item Abra seu navegador.
+    \item Faça login como equipe (usuário e senha fornecidos).
+    \item Acesse a aba \texttt{Runs}. Selecione o problema, a linguagem e envie o arquivo.
+\end{enumerate}
+
+\noindent Os vereditos que você pode receber do juiz são:
+
+\begin{itemize}
+    \item \texttt{YES}: sua submissão foi aceita.
+    \item \texttt{NO - Compilation error}: sua submissão teve um erro de compilação.
+    \item \texttt{NO - Runtime error}: sua submissão teve erro em tempo de execução
+    \item \texttt{NO - Time limit exceeded}: sua submissão demorou mais que o tempo limite do problema para executar.
+    \item \texttt{NO - Wrong answer}: sua submissão deu resposta errada.
+    \item \texttt{NO - Contact staff}: ocorreu um erro inesperado. Use a aba \texttt{Clarifications}.
+\end{itemize}
+
+\noindent Se houver múltiplos erros (como ``\texttt{Time limit exceeded}'' e ``\texttt{Wrong answer}''), qualquer um pode ser retornado.
+
+\subsubsection{Observações}
+
+\begin{itemize}
+    \item Não há vereditos como ``\texttt{Presentation Error}''. Erros de formatação (como escrever ``impossivel'' em vez de ``impossível'') resultam em ``\texttt{Wrong Answer}''.
+    \item Espaços em branco extras (dentro do razoável) são aceitos, mas exageros (como milhares de espaços) resultam em ``\texttt{Wrong Answer}''.
+    \item Saídas que excederem o limite de tamanho especificado resultarão em ``\texttt{Runtime Error}'' (isso inclui o conteúdo escrito em \texttt{stderr}).
+\end{itemize}
+
+\subsubsection{Penalidades}
+
+\begin{itemize}
+    \item Cada submissão com veredito ``\texttt{NO}'' antes do primeiro ``\texttt{YES}'' adiciona \textbf{20 minutos} ao tempo total da equipe.
+    \item Exceções para essa regra são os vereditos ``\texttt{NO - Compilation error}'' e ``\texttt{NO - Contact staff}'', que não geram penalidade.
+\end{itemize}
+
+\subsubsection{Tempo de Resposta}
+
+\begin{itemize}
+    \item O tempo para obter um veredito varia conforme o problema e o momento da competição.
+    \item Submissões podem ser julgadas fora de ordem, e verificações manuais podem causar atrasos.
+\end{itemize}
+
+\subsection{Clarifications}
+
+Toda comunicação com os juízes é feita via mensagens de esclarecimento (\texttt{Clarifications}):
+
+\begin{enumerate}
+    \item Acesse a aba \texttt{Clarifications}.
+    \item Selecione o problema e envie sua dúvida.
+\end{enumerate}
+
+\noindent Respostas dos juízes e perguntas enviadas aparecerão nessa aba. \textbf{Leia atentamente o enunciado antes de pedir esclarecimentos}. Os juízes não revelerão informações extras sobre os casos de teste ou o motivo de um veredito.
+
+\subsection{Placar}
+
+Para ver o placar:
+
+\begin{enumerate}
+    \item Acesse a aba \texttt{Score}.
+    \item O placar local será exibido.
+\end{enumerate}
+
+\subsection{Tasks}
+
+Na aba \texttt{Tasks}, a equipe pode:
+
+\begin{itemize}
+    \item Enviar arquivos para impressão (\texttt{Send}).
+    \item Pedir ajuda técnica (botão ``\texttt{S.O.S.}''). A organização só auxilia com problemas técnicos (hardware, etc.).
 \end{itemize}
 
 \end{titlepage}

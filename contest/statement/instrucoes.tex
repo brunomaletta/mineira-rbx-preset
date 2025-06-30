@@ -1,42 +1,54 @@
-Este caderno de tarefas é composto por \pageref{lastpage} páginas (não
+\section*{Informações gerais}
+
+Este caderno de tarefas é composto por \pageref*{lastpage} páginas (não
 contando a capa), numeradas 
-de 1 a \pageref{lastpage}. Verifique se o caderno está completo.
+de 1 a \pageref*{lastpage}. Verifique se o caderno está completo.
 
 \subsection*{Entrada}
 
 \begin{itemize}
-\item A entrada deve ser lida da entrada padrão.
+	\item A entrada deve ser lida da entrada padrão.
 
-\item A entrada consiste em exatamente um caso de teste, que é descrito usando uma
-quantidade de linhas que depende do problema. O formato da entrada é como descrito
-em cada problema. A entrada não contém nenhum conteúdo extra.
+	\item A entrada consiste em exatamente um caso de teste, que é descrito usando uma
+	quantidade de linhas que depende do problema. O formato da entrada é como descrito
+	em cada problema. A entrada não contém nenhum conteúdo extra.
 
-\item Todas as linhas da entrada, incluindo a última, terminam com o caractere de fim
-de linha (\textbackslash n).
+	\item Todas as linhas da entrada, incluindo a última, terminam com o caractere de fim
+	de linha (\texttt{\textbackslash n}).
 
-\item A entrada não contém linhas vazias.
+	\item A entrada não contém linhas vazias.
 
-\item Quando a entrada contém múltiplos valores separados por espaços, 
-existe exatamente um espaço em branco entre dois valores consecutivos na mesma linha.
-
+	\item Quando a entrada contém múltiplos valores separados por espaços, 
+	existe exatamente um espaço em branco entre dois valores consecutivos na mesma linha.
 \end{itemize}
 
 \subsection*{Saída}
 
 \begin{itemize}
+	\item A saída deve ser escrita na saída padrão.
 
-\item A saída deve ser escrita na saída padrão.
+	\item A saída deve respeitar o formato especificado no enunciado. A saída não deve
+	conter nenhum dado extra.
 
-\item A saída deve respeitar o formato especificado no enunciado. A saída não deve
-conter nenhum dado extra.
+	\item Todas as linhas da saída, incluindo a última, devem terminar com o caractere de fim
+	de linha (\texttt{\textbackslash n}).
 
-\item Todas as linhas da saída, incluindo a última, devem terminar com o caractere de fim
-de linha (\textbackslash n).
+	\item Quando uma linha da saída apresentar múltiplos valores separados por espaços, deve haver
+	exatamente um espaço em branco entre dois valores consecutivos.
 
-\item Quando uma linha da saída apresentar múltiplos valores separados por espaços, deve haver
-exatamente um espaço em branco entre dois valores consecutivos.
+	\item Quando um valor da saída for um número real, use pelo menos o número de casas decimais correspondente
+	à precisão requisitada no enunciado.
+\end{itemize}
 
-\item Quando um valor da saída for um número real, use pelo menos o número de casas decimais correspondente
-à precisão requisitada no enunciado.
+\subsection*{Problemas Interativos}
 
+A prova pode conter problemas interativos. Nesse tipo de problema, os dados de entrada fornecidos ao seu programa podem não ser predeterminados, mas são construídos especificamente para a sua solução. O juiz escreve um programa especial (o interador), cuja saída é transferida para a entrada da sua solução, e a saída do seu programa é enviada para a entrada do interador. Em outras palavras, sua solução e o interador trocam dados e podem decidir o que imprimir com base no histórico da comunicação.
+
+Quando você escreve a solução para um problema interativo, é importante lembrar que, se você imprimir algum dado, é possível que ele seja primeiro armazenado em um \textit{buffer} interno e não seja transferido imediatamente para o interador. Para evitar essa situação, você deve usar uma operação especial de \textit{flush} toda vez que imprimir algum dado. Essas operações de \textit{flush} estão presentes nas bibliotecas padrão de quase todas as linguagens:
+
+\begin{itemize}
+	\item \texttt{fflush(stdout)} em \texttt{C}.
+	\item \texttt{cout.flush()} em \texttt{C++}.
+	\item \texttt{sys.stdout.flush()} em \texttt{Python}.
+	\item \texttt{System.out.flush()} em \texttt{Java}.
 \end{itemize}

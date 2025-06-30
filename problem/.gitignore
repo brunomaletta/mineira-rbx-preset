@@ -1,7 +1,19 @@
+.DS_Store
 .box/
 build/
+.vscode/
 
+a.out
+*.exe
+*.pyc
 *.o
+*~
+
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
 *.aux
 *.log
-.DS_Store
+
+*.un~

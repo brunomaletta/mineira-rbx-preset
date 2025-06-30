@@ -1,5 +1,5 @@
+---
 # rbx cheatsheet at https://rsalesc.github.io/rbx/setters/cheatsheet/
-
 name: 'novo-problema'
 timeLimit: 1000  # ms
 memoryLimit: 1024  # MB
@@ -21,35 +21,46 @@ testcases:
 # See more at https://rsalesc.github.io/rbx/setters/reference/package/#solutions
 solutions:
   - path: 'sols/ac_main_roberto.cpp'
-    outcome: ACCEPTED
+    outcome: 'ACCEPTED'
   - path: 'sols/ac_java_roberto.java'
-    outcome: ACCEPTED
+    outcome: 'ACCEPTED'
   - path: 'sols/ac_python_roberto.py'
-    outcome: ACCEPTED # Can be AC too
+    outcome: 'ACCEPTED'  # Can be AC too
   - path: 'sols/tle_example_roberto.cpp'
-    outcome: TIME_LIMIT_EXCEEDED  # Can be TLE too
+    outcome: 'TIME_LIMIT_EXCEEDED'  # Can be TLE too
   - path: 'sols/wa_example_roberto.cpp'
-    outcome: WRONG_ANSWER # Can be WA too
+    outcome: 'WRONG_ANSWER'  # Can be WA too
 # Statements can be built with `rbx statement build`
 statements:
-  - title: 'Novo Problema'  # Change this to the human-readable title of the problem.
+  - name: 'statement'
+    title: 'Novo problema'  # Change this to the human-readable title of the problem.
     path: 'statement/statement.rbx.tex'  # Open this file to edit your statement.
-    type: rbxTeX
+    type: 'rbxTeX'
     language: 'pt'
     assets: ['statement/mineira.sty', 'statement/*.png', 'statement/*.pdf']
     configure:
       - type: 'rbx-tex'  # Convert rbxTeX to TeX
         template: 'statement/template.rbx.tex'
+  - name: 'statement-en'
+    extends: 'statement'
+    title: 'New problem'  # Change this to the human-readable title of the problem.
+    path: 'statement/en_statement.rbx.tex'  # Open this file to edit your statement.
+    language: 'en'
 # More about variables at https://rsalesc.github.io/rbx/setters/reference/package/#variables
 #
 # https://rsalesc.github.io/rbx/setters/cheatsheet/#add-variables shows how they can be used in
 # statements, stress tests and validators.
 vars:
-    "MAX_N": 1000000000  # Can be used in the validator, in stress tests and in the statement.
-    "MOD": py`10**9 + 7` # Can also be a Python3 expression
+  MAX_N: 1000000000  # Can be used in the validator, in stress tests and in the statement.
+  MOD: 'py`10**9 + 7`'  # Can also be a Python3 expression
 unitTests:
-    validator:
-      - glob: 'unit/validator/valid*.in'
-        outcome: VALID
-      - glob: 'unit/validator/invalid*.in'
-        outcome: INVALID
+  validator:
+    - glob: 'unit/validator/valid*.in'
+      outcome: 'VALID'
+    - glob: 'unit/validator/invalid*.in'
+      outcome: 'INVALID'
+  checker:
+    - glob: unit/checker/ac*
+      outcome: ACCEPTED
+    - glob: unit/checker/wa*
+      outcome: WRONG_ANSWER

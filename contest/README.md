@@ -1,3 +1,11 @@
+# Cloning the repository
+
+Clone the repository with its submodules:
+
+```sh
+git clone git@github.com:brunomaletta/mineira25.git --recurse-submodules
+```
+
 # Using `rbx`
 
 ## Usage
@@ -5,6 +13,8 @@
 Instructions can be found [here](https://rsalesc.github.io/rbx/setters/first-steps/), and more information can be found inside each problem's `problem.rbx.yml`.
 
 Also, you can find instructional videos [here](https://drive.google.com/drive/folders/100nIVGWt-iCtWn1dxbhhEgRdDpAWlHAX?usp=sharing).
+
+After coming to this folder for the first time, you must run `rbx activate`.
 
 ## Requirements
 
@@ -77,3 +87,36 @@ sudo apt install texlive-full
 In MacOS, you should look at [MacTeX](https://www.tug.org/mactex/).
 
 WARNING: `pdfLaTeX` acts weird the first time it is executed after installation. If you see your build statement command get stuck after running it for the first time, just re-run.
+
+# Problemsetting patterns
+
+Please, follow these patterns for the development of the contest.
+
+## Commit messages
+
+Please only commit changes for one problem per commit. Also, prefix your commit message with the name of the problem. For example, if you added tests to problem "Dados", you might set your commit message to:
+
+```
+dados: added a few extra tests
+```
+
+## Solution names
+
+Please name your solutions using the following format: `veredict_complexity_my_description_author.cpp`. For example, a slow O(n^2 + m) naive solution that should throw TLE authored by Bruno might be named:
+
+```
+tle_n2+m_naive_bruno.cpp
+```
+
+## Recommended development order
+
+We recommend you create each problem in the following order:
+
+1. Add problem to contest
+2. Create statement
+3. Create sample
+4. Create validator
+5. Create checker
+6. Implement main solution
+7. Create Tests
+8. Implement other solutions

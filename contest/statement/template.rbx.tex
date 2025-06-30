@@ -20,7 +20,7 @@
 
 	%- if problem.samples
 		\vspace{0.3cm}
-		\subsection*{Exemplos}
+		\subsection*{\strExamples}
 		%- for sample in problem.samples
 			%- if sample.interaction is not none
 				\exemploInterativo
@@ -38,11 +38,12 @@
 	%- endif
 
 	%- if problem.blocks.notes is defined
-		\subsection*{Observações}
+		\subsection*{\strNotes}
 		\VAR{problem.blocks.notes}
 	%- endif
 }
-%- if problem.blocks.editorial is defined
-\subsection*{Solução}
+
+%- if problem.blocks.editorial is nonnull and vars.editorial is truthy
+\subsection*{\strSolution}
 \VAR{problem.blocks.editorial}
 %- endif

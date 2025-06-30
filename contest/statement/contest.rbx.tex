@@ -1,5 +1,6 @@
 \documentclass[a4paper,11pt]{article}
 
+\def\lang{\VAR{lang}}
 \usepackage{mineira}
 \usepackage{import}
 
@@ -7,8 +8,22 @@
 \def\Modalidade{\VAR{contest.title}}
 \def\Data{\VAR{vars.date}}
 
+%- if vars.editorial is truthy
+\AddToHook{shipout/foreground}{
+       \begin{tikzpicture}[overlay, remember picture]
+            \node[text=gray, rotate=45, scale=8, opacity=0.3]
+				at (0.5\paperwidth,-0.6\paperheight) {EDITORIAL};
+        \end{tikzpicture}
+    }
+%- endif
+
 \begin{document}
+
+%- if vars.editorial is truthy
+\InsertEditorialTitlePage
+%- else
 \InsertTitlePage
+%- endif
 
 %- for problem in problems
 \stepcounter{problemcounter}
