@@ -63,10 +63,10 @@ O sistema de correção de submissões será executado na distribuição \texttt
 \hline
 %- for problem in problems:
 \VAR{problem.short_name}
-& \VAR{problem.package.timelimit_for_language('cpp') / 1000 | round(1, 'floor')}
-& \VAR{problem.package.timelimit_for_language('java') / 1000 | round(1, 'floor')}
-& \VAR{problem.package.timelimit_for_language('py') / 1000 | round(1, 'floor')}
-& \VAR{problem.package.memoryLimit}
+& \VAR{problem.limits.timelimit_for_language('cpp') / 1000 | round(1, 'floor')}
+& \VAR{problem.limits.timelimit_for_language('java') / 1000 | round(1, 'floor')}
+& \VAR{problem.limits.timelimit_for_language('py') / 1000 | round(1, 'floor')}
+& \VAR{problem.limits.memoryLimit}
 \\ \hline
 %- endfor
 \end{tabular}
