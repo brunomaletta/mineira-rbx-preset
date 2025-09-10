@@ -20,17 +20,28 @@
 
 	%- if problem.samples
 		\vspace{0.3cm}
+		\setboolean{widesamples}{false}
+
+		% Find out if should be wide-samples or not
+		%- for sample in problem.samples
+			%- if sample.interaction is none
+				\checkIfWide{\VAR{sample.inputPath}}
+				\checkIfWide{\VAR{sample.outputPath if sample.outputPath is not none else ''}}
+			%- endif
+		%- endfor
+
 		\subsection*{\strExamples}
 		%- for sample in problem.samples
-			%- if sample.interaction is not none
+			%- if sample.interaction is none
+				\exemploMaybeWide{\VAR{sample.inputPath}}
+					{\VAR{sample.outputPath if sample.outputPath is not none else ''}}
+			%- else
 				\exemploInterativo
 				%- for entry in sample.interaction.entries
 					\interaction{\VAR{entry.data}}{\VAR{entry.pipe}}
 				%- endfor
-			%- else
-				\exemplo{\VAR{sample.inputPath}}
-					{\VAR{sample.outputPath if sample.outputPath is not none else ''}}
 			%- endif
+
 			%- if sample.explanation is not none
 				\explanation{\VAR{sample.explanation}}
 			%- endif
@@ -42,7 +53,6 @@
 		\VAR{problem.blocks.notes}
 	%- endif
 }
-
 %- if problem.blocks.editorial is nonnull and vars.editorial is truthy
 \subsection*{\strSolution}
 \VAR{problem.blocks.editorial}

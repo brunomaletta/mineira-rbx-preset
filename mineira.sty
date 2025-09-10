@@ -132,6 +132,18 @@
 \newcounter{exemplocounter}[problemcounter]
 \setcounter{exemplocounter}{0}
 
+\newsavebox{\filebox}
+\newboolean{widesamples}
+
+\newcommand{\checkIfWide}[1]{
+	\ifnum0\pdffilesize{#1}>0
+		\sbox{\filebox}{\BVerbatimInput[xleftmargin=0mm,numbers=none,obeytabs=true]{#1}}%
+		\ifdim\wd\filebox > 0.53\textwidth
+			\setboolean{widesamples}{true}
+		\fi
+	\fi
+}
+
 \newcommand\mc[1]{\multicolumn{1}{l}{#1}}
 \newcommand{\exemplo}[2]{
 	{\small
@@ -164,6 +176,56 @@
 
 	}
 } % exemplo
+
+\newcommand{\exemploWide}[2]{
+	{\small
+
+		\stepcounter{exemplocounter}
+
+		\vspace{0.2cm}
+		\noindent
+		\begin{minipage}[c]{0.945\textwidth}
+			\begin{center}
+				\begin{tabular}{|l|}
+					\mc{\bf{\strSampleinput \arabic{exemplocounter}}} \\
+
+					\hline
+					\begin{minipage}[t]{1.03\textwidth}
+						\vspace{0.01cm}
+						\insereArquivo{#1}
+						\vspace{-0.2cm}
+					\end{minipage} \\
+					\hline
+				\end{tabular}
+
+				\vspace{0.1cm}
+
+				\begin{tabular}{|l|}
+					\mc{\bf{\strSampleoutput \arabic{exemplocounter}}} \\
+
+					\hline
+					\begin{minipage}[t]{1.03\textwidth}
+						\vspace{0.01cm}
+						\insereArquivo{#2}
+						\vspace{-0.2cm}
+					\end{minipage} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{minipage} % leave next line empty
+		\vspace{0.2cm}
+
+	}
+} % exemploWide
+
+\newcommand{\exemploMaybeWide}[2]{
+	\ifthenelse{\boolean{widesamples}}{
+		\exemploWide{#1}{#2}
+	}{
+		\exemplo{#1}{#2}
+	}
+} % exemploMaybeWide
+
 
 \newcommand{\exemploInterativo}{
 	{\small
